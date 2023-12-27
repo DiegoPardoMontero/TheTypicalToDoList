@@ -22,15 +22,14 @@ public class DBInitializer implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
+
         //Create some tasks
         Task myTestTask = new Task();
         myTestTask.setTitle("Start new Java Course");
-        myTestTask.setDescription("Go to my favorite platform and start a course");
         myTestTask.setCompleted(false);
 
         Task myDeleteTask = new Task();
         myDeleteTask.setTitle("Play some guitar");
-        myDeleteTask.setDescription("Practice \"Colapso\" from Kevin Kaarl for 2 hours");
         myDeleteTask.setCompleted(false);
 
         //Save some tasks
@@ -43,6 +42,7 @@ public class DBInitializer implements CommandLineRunner {
         //Modify a task
         mySavedTask.setTitle("Start new Python Course");
         mySavedTask.setCompleted(true);
+        taskService.modifyTask(mySavedTask);
 
         //Retrieve the actual tasks
         List<Task> myTestTasks = taskService.retrieveTasks();
@@ -60,5 +60,6 @@ public class DBInitializer implements CommandLineRunner {
 
         //Delete other task
         taskService.deleteTask(2);
+
     }
 }
