@@ -6,10 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import com.pardo.todolist.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +31,12 @@ public class TaskController {
         }
 
         return tasks;
+    }
+
+    @CrossOrigin("http://localhost:4200/")
+    @PostMapping("create")
+    public Task createTask(@RequestBody Task task) {
+        taskService.saveTask(task);
+        return task;
     }
 }
