@@ -39,4 +39,11 @@ public class TaskController {
         taskService.saveTask(task);
         return task;
     }
+
+    @CrossOrigin("http://localhost:4200/")
+    @DeleteMapping("/delete/{idTask}")
+    public void deleteTask(@PathVariable("idTask") int id){
+        taskService.deleteTask(id);
+    }
+
 }
