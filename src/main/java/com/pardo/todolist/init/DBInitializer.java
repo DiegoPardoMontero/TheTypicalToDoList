@@ -41,7 +41,7 @@ public class DBInitializer implements CommandLineRunner {
 
         //Modify a task
         mySavedTask.setTitle("Start new Python Course");
-        mySavedTask.setCompleted(true);
+        mySavedTask.setCompleted(false);
         taskService.modifyTask(mySavedTask);
 
         //Retrieve the actual tasks

@@ -22,7 +22,7 @@ public class TaskController {
     @CrossOrigin("http://localhost:4200/")
 
     @GetMapping("/list")
-    public List<Task> retrieveTasks() {
+        public List<Task> retrieveTasks() {
 
         List<Task> tasks = taskService.retrieveTasks();
 
@@ -46,6 +46,13 @@ public class TaskController {
         Task taskToDelete =  taskService.getTask(id);
         taskService.deleteTask(id);
         return taskToDelete;
+    }
+
+    @CrossOrigin("http://localhost:4200/")
+    @PutMapping("/modify")
+    public Task modifyTask(@RequestBody Task task){
+        taskService.modifyTask(task);
+        return task;
     }
 
 }
